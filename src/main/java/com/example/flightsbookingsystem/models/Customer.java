@@ -8,10 +8,10 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@Entity // table in database
+@Entity //used for Spring JPA
 @Data  // for getters ans setters
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor //Lombok, create no args constructor
+@AllArgsConstructor //Lombok annotation, creates all args constructor
 @Table(
         name = "customer",
         uniqueConstraints = {
