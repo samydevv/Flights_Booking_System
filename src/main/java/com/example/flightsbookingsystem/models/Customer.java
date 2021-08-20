@@ -12,12 +12,28 @@ import java.util.Collection;
 @Data  // for getters ans setters
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(
+        name = "customer",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "customer_user_name_unique",columnNames = "user_name")
+        }
+)
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private  Long id ;
+    @Column(
+            nullable = false
+    )
     private  String name;
+    @Column(
+            name = "user_name",
+            nullable = false
+    )
     private  String userName;
+    @Column(
+            nullable = false
+    )
     private  String password;
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles = new ArrayList<>();
