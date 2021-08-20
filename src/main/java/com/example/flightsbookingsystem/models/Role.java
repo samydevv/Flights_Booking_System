@@ -8,19 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
 
 @Entity // table in database
 @Data  // for getters ans setters
 @NoArgsConstructor
 @AllArgsConstructor
-public class Flight {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long  id;
-    private long fare ;
-    private  String from;
-    private  String to;
-    private  Date date;
+    private long id ;
+    private String name;
 
 }

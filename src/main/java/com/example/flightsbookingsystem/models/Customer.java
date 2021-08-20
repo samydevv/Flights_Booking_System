@@ -1,44 +1,28 @@
 package com.example.flightsbookingsystem.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.UUID;
 
+@Entity // table in database
+@Data  // for getters ans setters
+@NoArgsConstructor
+@AllArgsConstructor
 public class Customer {
-    private final UUID id ;
-    private final String name;
-    private final String userName;
-    private final String password;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private  Long id ;
+    private  String name;
+    private  String userName;
+    private  String password;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Collection<Role> roles = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Flight> flights = new ArrayList<>();
 
-    public Customer(UUID id, String name, String userName, String password) {
-        this.id = id;
-        this.name = name;
-        this.userName = userName;
-        this.password = password;
-    }
 
-    public UUID getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public Collection<Flight> getFlights() {
-        return flights;
-    }
-
-    public void setFlights(Collection<Flight> flights) {
-        this.flights = flights;
-    }
 }

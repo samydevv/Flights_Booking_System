@@ -1,28 +1,26 @@
 package com.example.flightsbookingsystem.models;
 
-import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+
+@Entity // table in database
+@Data  // for getters ans setters
+@NoArgsConstructor
+@AllArgsConstructor
 public class Admin {
-    private final UUID id ;
-    private final String userName;
-    private final String password;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id ;
+    private String name;
+    private String userName;
+    private String password;
+    @ManyToMany (fetch = FetchType.EAGER)
+    private Collection<Role> roles = new ArrayList<>();
 
-    public Admin(UUID id, String userName, String password) {
-        this.id = id;
-        this.userName = userName;
-        this.password = password;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
 
 }
