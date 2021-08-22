@@ -21,7 +21,7 @@ import java.util.Collection;
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id ;
+    private Long id ;
     @Column(
             nullable = false
     )

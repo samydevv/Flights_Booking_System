@@ -8,9 +8,6 @@ import java.util.List;
 
 public interface CustomerService {
     Customer saveCustomer(Customer customer);
-    Customer getCustomer(String userName);
-    Role saveRole  (Role role);
-    void addRoleToCustomer (String userName, String roleName);
     List<Flight> searchForFlight(String departurePlace, String arrivePlace);
     List<Flight> searchForFlight(long fare);
     void bookFlight(String userName, Flight flight);

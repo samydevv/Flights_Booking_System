@@ -1,5 +1,6 @@
 package com.example.flightsbookingsystem.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,7 @@ import java.sql.Date;
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long  id;
+    private Long  id;
     @Column(
             nullable = false
     )
@@ -37,6 +38,7 @@ public class Flight {
     @Column(
             nullable = false
     )
+    @JsonFormat(pattern="dd-MM-yyyy")
     private  Date date;
 
 }

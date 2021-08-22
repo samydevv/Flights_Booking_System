@@ -30,25 +30,6 @@ public class CustomerServiceImplementation implements CustomerService {
     }
 
     @Override
-    public Customer getCustomer(String userName) {
-        return customerRepo.findByUserName(userName);
-    }
-
-    @Override
-    public Role saveRole(Role role) {
-        log.info("saving new role {} into database", role.getName());
-        return roleRepo.save(role);
-    }
-
-    @Override
-    public void addRoleToCustomer(String userName, String roleName) {
-        log.info("adding role {} to admin {}", roleName, userName);
-        Customer customer = customerRepo.findByUserName(userName);
-        Role role = roleRepo.findByName(roleName);
-        customer.getRoles().add(role);
-    }
-
-    @Override
     public List<Flight> searchForFlight(String departurePlace, String arrivePlace) {
         log.info("searching for flight by location");
         return flightRepo.findFlightByArrivePlaceAndDeparturePlace(departurePlace, arrivePlace);

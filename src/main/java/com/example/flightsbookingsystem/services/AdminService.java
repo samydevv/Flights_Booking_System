@@ -5,17 +5,20 @@ import com.example.flightsbookingsystem.models.Flight;
 import com.example.flightsbookingsystem.models.Role;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.util.List;
 
 public interface AdminService {
     Admin saveAdmin (Admin admin);
     Admin getAdmin (String userName);
+    List<Admin> getAdmins ();
     Role  saveRole  (Role role);
     void addRoleToAdmin (String userName, String roleName);
-
-    Flight saveFlight (Flight flight);
-    Flight getFlight  (long flightId);
-    Flight updateFlightArrivePlace (long flightId, String newArrivePlace);
-    Flight updateFlightDeparturePlace (long flightId, String newDeparturePlace);
-    Flight updateFlightDate (long flightId, Date newDate);
-    void deleteFlight (long flightId);
+    void addRoleToCustomer (String userName, String roleName);
+    void saveFlight (Flight flight);
+    Flight getFlight  (Long flightId);
+    Flight updateFlightArrivePlace (Long flightId, String newArrivePlace);
+    Flight updateFlightDeparturePlace (Long flightId, String newDeparturePlace);
+    Flight updateFlightDate (Long flightId, String newDate) throws ParseException;
+    void deleteFlight (Long flightId);
 }

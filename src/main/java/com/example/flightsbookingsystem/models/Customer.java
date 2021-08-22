@@ -37,7 +37,7 @@ public class Customer {
     private  String password;
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles = new ArrayList<>();
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     private Collection<Flight> flights = new ArrayList<>();
 
 
