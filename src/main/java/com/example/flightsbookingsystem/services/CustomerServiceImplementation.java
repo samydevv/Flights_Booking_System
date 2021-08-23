@@ -20,7 +20,6 @@ import java.util.List;
 @Transactional
 public class CustomerServiceImplementation implements CustomerService {
     private final CustomerRepo customerRepo;
-    private final RoleRepo roleRepo;
     private final FlightRepo flightRepo;
 
     @Override
@@ -42,21 +41,24 @@ public class CustomerServiceImplementation implements CustomerService {
     }
 
     @Override
-    public void bookFlight(String userName, Flight flight) {
+    public void bookFlight(String userName, Long flightId) {
         Customer customer = customerRepo.findByUserName(userName);
+        Flight flight = flightRepo.getById(flightId);
         customer.getFlights().add(flight);
         log.info("user whose name is {} has booked a flight with an id equal to {}",customer.getName(),flight.getId());
     }
     
     @Override
-    public void upgradeFlight(String userName, Flight flight, String classType) {
+    public void upgradeFlight(String userName, Long flightId, String classType) {
+        Flight flight = flightRepo.getById(flightId);
         log.info("upgrading class type from {} to {}",flight.getClassType(),classType);
         Customer customer = customerRepo.findByUserName(userName);
         flight.setClassType(classType);
     }
 
     @Override
-    public void cancelFlight(String userName, Flight flight) {
+    public void cancelFlight(String userName, Long flightId) {
+        Flight flight = flightRepo.getById(flightId);
         Customer customer = customerRepo.findByUserName(userName);
         if (customer.getFlights().remove(flight)) {
             log.info("Flight cancel successfully...");

@@ -10,7 +10,7 @@ public interface CustomerService {
     Customer saveCustomer(Customer customer);
     List<Flight> searchForFlight(String departurePlace, String arrivePlace);
     List<Flight> searchForFlight(long fare);
-    void bookFlight(String userName, Flight flight);
-    void upgradeFlight(String userName, Flight flight, String  classType);
-    void cancelFlight(String userName, Flight flight);
+    void bookFlight(String userName, Long flightId);
+    void upgradeFlight(String userName, Long flightId, String  classType);
+    void cancelFlight(String userName, Long flightId);
 }

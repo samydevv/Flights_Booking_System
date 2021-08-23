@@ -1,6 +1,7 @@
 package com.example.flightsbookingsystem.services;
 
 import com.example.flightsbookingsystem.models.Admin;
+import com.example.flightsbookingsystem.models.Customer;
 import com.example.flightsbookingsystem.models.Flight;
 import com.example.flightsbookingsystem.models.Role;
 
@@ -12,6 +13,7 @@ public interface AdminService {
     Admin saveAdmin (Admin admin);
     Admin getAdmin (String userName);
     List<Admin> getAdmins ();
+    List<Customer> getCustomers ();
     Role  saveRole  (Role role);
     void addRoleToAdmin (String userName, String roleName);
     void addRoleToCustomer (String userName, String roleName);

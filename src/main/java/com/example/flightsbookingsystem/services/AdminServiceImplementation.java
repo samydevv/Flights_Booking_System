@@ -45,6 +45,11 @@ public class AdminServiceImplementation implements AdminService{
     }
 
     @Override
+    public List<Customer> getCustomers() {
+        return customerRepo.findAll();
+    }
+
+    @Override
     public Role saveRole(Role role) {
         log.info("saving new role {} into database",role.getName());
         return roleRepo.save(role);

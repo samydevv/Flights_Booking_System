@@ -2,6 +2,7 @@ package com.example.flightsbookingsystem;
 
 import com.example.flightsbookingsystem.models.Admin;
 import com.example.flightsbookingsystem.models.Customer;
+import com.example.flightsbookingsystem.models.Flight;
 import com.example.flightsbookingsystem.models.Role;
 import com.example.flightsbookingsystem.services.AdminService;
 import com.example.flightsbookingsystem.services.CustomerService;
@@ -10,6 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 @SpringBootApplication
@@ -38,6 +40,17 @@ public class FlightsBookingSystemApplication {
             adminService.addRoleToCustomer("bahaa1","ROLE_CUSTOMER");
             adminService.addRoleToCustomer("ahmed8","ROLE_CUSTOMER");
             adminService.addRoleToCustomer("hossam9","ROLE_CUSTOMER");
+
+            Date date1 = Date.valueOf("2019-01-26");
+            adminService.saveFlight(new Flight(null, 2500,"Class-B","Aswan","Canada", date1));
+
+            Date date2 = Date.valueOf("2010-10-20");
+            adminService.saveFlight(new Flight(null, 3500,"Class-A","Paris","US", date2));
+
+            Date date3 = Date.valueOf("2021-1-1");
+            adminService.saveFlight(new Flight(null, 4500,"Class-c","EG","UK", date3));
+
+
         };
     }
 }
