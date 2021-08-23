@@ -37,19 +37,19 @@ public class CustomerAPI extends RoleTo {
     }
 
     @PostMapping ("/bookFlight/{userName}/{flightId}")
-    public ResponseEntity bookFlight(@PathVariable String userName, @PathVariable Long flightId){
+    public ResponseEntity<?> bookFlight(@PathVariable String userName, @PathVariable Long flightId){
         customerService.bookFlight(userName,flightId);
         return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/upgradeFlight/{userName}/{flightId}/{classType}")
-    public ResponseEntity upgradeFlight(@PathVariable String userName, @PathVariable Long flightId, @PathVariable String classType){
+    public ResponseEntity<?> upgradeFlight(@PathVariable String userName, @PathVariable Long flightId, @PathVariable String classType){
         customerService.upgradeFlight(userName,flightId,classType);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/cancelFlight/{userName}/{flightId}")
-    public ResponseEntity cancelFlight(@PathVariable String userName, @PathVariable Long flightId){
+    public ResponseEntity<?> cancelFlight(@PathVariable String userName, @PathVariable Long flightId){
         customerService.cancelFlight(userName,flightId);
         return ResponseEntity.ok().build();
     }

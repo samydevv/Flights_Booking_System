@@ -45,19 +45,19 @@ public class AdminAPI extends RoleTo {
     }
 
     @PostMapping("/role/addRoleAdmin")
-    public ResponseEntity addRoleToAdmin(@RequestBody RoleTo form) {
+    public ResponseEntity<?> addRoleToAdmin(@RequestBody RoleTo form) {
         adminService.addRoleToAdmin(form.getUserName(), form.getRoleName());
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/role/addRoleCustomer")
-    public ResponseEntity addRoleToCustomer(@RequestBody RoleTo form) {
+    public ResponseEntity<?> addRoleToCustomer(@RequestBody RoleTo form) {
         adminService.addRoleToCustomer(form.getUserName(), form.getRoleName());
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/saveFlight")
-    public ResponseEntity saveFlight(@RequestBody Flight flight) {
+    public ResponseEntity<?> saveFlight(@RequestBody Flight flight) {
         adminService.saveFlight(flight);
         return ResponseEntity.ok().build();
     }
@@ -68,25 +68,25 @@ public class AdminAPI extends RoleTo {
     }
 
     @DeleteMapping("/deleteFlight/{id}")
-    public ResponseEntity deleteFlight(@PathVariable("id") Long flightId) {
+    public ResponseEntity<?> deleteFlight(@PathVariable("id") Long flightId) {
         adminService.deleteFlight(flightId);
         return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/updateFlightArrivePlace/{id}/{newArrivePlace}")
-    public ResponseEntity updateFlightArrivePlace(@PathVariable("id") Long flightId, @PathVariable("newArrivePlace") String newArrivePlace) {
+    public ResponseEntity<?> updateFlightArrivePlace(@PathVariable("id") Long flightId, @PathVariable("newArrivePlace") String newArrivePlace) {
         adminService.updateFlightArrivePlace(flightId, newArrivePlace);
         return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/updateFlightDeparturePlace/{id}/{newDeparturePlace}")
-    public ResponseEntity updateFlightDeparturePlace(@PathVariable("id") Long flightId, @PathVariable("newDeparturePlace") String newDeparturePlace) {
+    public ResponseEntity<?> updateFlightDeparturePlace(@PathVariable("id") Long flightId, @PathVariable("newDeparturePlace") String newDeparturePlace) {
         adminService.updateFlightDeparturePlace(flightId, newDeparturePlace);
         return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/updateFlightDate/{id}/{newDate}")
-    public ResponseEntity updateFlightDate(@PathVariable("id") Long flightId, @PathVariable("newDate") String newDate) throws ParseException {
+    public ResponseEntity<?> updateFlightDate(@PathVariable("id") Long flightId, @PathVariable("newDate") String newDate) throws ParseException {
         adminService.updateFlightDate(flightId, newDate);
         return ResponseEntity.ok().build();
     }
