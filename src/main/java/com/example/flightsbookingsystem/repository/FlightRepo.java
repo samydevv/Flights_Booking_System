@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface FlightRepo extends JpaRepository<Flight,Long> {
-    List<Flight> findFlightByArrivePlaceAndDeparturePlace (String departurePlace, String arrivePlace);
-    List<Flight> findFlightByFare (long fare);
+    List<Flight> findFlightByDeparturePlaceAndArrivePlace (String departurePlace, String arrivePlace);
+    List<Flight> findFlightByFareIsLessThanEqual (long fare);
 }
 

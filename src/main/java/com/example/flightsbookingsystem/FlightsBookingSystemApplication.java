@@ -42,13 +42,13 @@ public class FlightsBookingSystemApplication {
             adminService.addRoleToCustomer("hossam9","ROLE_CUSTOMER");
 
             Date date1 = Date.valueOf("2019-01-26");
-            adminService.saveFlight(new Flight(null, 2500,"Class-B","Aswan","Canada", date1));
+            adminService.saveFlight(new Flight(null, 2500,"Class-C","EG","UK", date1));
 
             Date date2 = Date.valueOf("2010-10-20");
-            adminService.saveFlight(new Flight(null, 3500,"Class-A","Paris","US", date2));
+            adminService.saveFlight(new Flight(null, 3500,"Class-B","Paris","US", date2));
 
             Date date3 = Date.valueOf("2021-1-1");
-            adminService.saveFlight(new Flight(null, 4500,"Class-c","EG","UK", date3));
+            adminService.saveFlight(new Flight(null, 4500,"Class-A","EG","UK", date3));
 
 
         };

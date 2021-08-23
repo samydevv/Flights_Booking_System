@@ -31,13 +31,13 @@ public class CustomerServiceImplementation implements CustomerService {
     @Override
     public List<Flight> searchForFlight(String departurePlace, String arrivePlace) {
         log.info("searching for flight by location");
-        return flightRepo.findFlightByArrivePlaceAndDeparturePlace(departurePlace, arrivePlace);
+        return flightRepo.findFlightByDeparturePlaceAndArrivePlace(departurePlace, arrivePlace);
     }
 
     @Override
     public List<Flight> searchForFlight(long fare) {
         log.info("searching for flight by fare");
-        return flightRepo.findFlightByFare(fare);
+        return flightRepo.findFlightByFareIsLessThanEqual(fare);
     }
 
     @Override
@@ -54,6 +54,7 @@ public class CustomerServiceImplementation implements CustomerService {
         log.info("upgrading class type from {} to {}",flight.getClassType(),classType);
         Customer customer = customerRepo.findByUserName(userName);
         flight.setClassType(classType);
+        flight.setFare(flight.getFare()*2);
     }
 
     @Override
