@@ -10,6 +10,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -19,6 +21,11 @@ public class FlightsBookingSystemApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(FlightsBookingSystemApplication.class, args);
+    }
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
@@ -37,18 +44,18 @@ public class FlightsBookingSystemApplication {
             adminService.addRoleToAdmin("samy1", "ROLE_ADMIN");
             adminService.addRoleToAdmin("alaa29", "ROLE_ADMIN");
 
-            adminService.addRoleToCustomer("bahaa1","ROLE_CUSTOMER");
-            adminService.addRoleToCustomer("ahmed8","ROLE_CUSTOMER");
-            adminService.addRoleToCustomer("hossam9","ROLE_CUSTOMER");
+            adminService.addRoleToCustomer("bahaa1", "ROLE_CUSTOMER");
+            adminService.addRoleToCustomer("ahmed8", "ROLE_CUSTOMER");
+            adminService.addRoleToCustomer("hossam9", "ROLE_CUSTOMER");
 
             Date date1 = Date.valueOf("2019-01-26");
-            adminService.saveFlight(new Flight(null, 2500,"Class-C","EG","UK", date1));
+            adminService.saveFlight(new Flight(null, 2500, "Class-C", "EG", "UK", date1));
 
             Date date2 = Date.valueOf("2010-10-20");
-            adminService.saveFlight(new Flight(null, 3500,"Class-B","Paris","US", date2));
+            adminService.saveFlight(new Flight(null, 3500, "Class-B", "Paris", "US", date2));
 
             Date date3 = Date.valueOf("2021-1-1");
-            adminService.saveFlight(new Flight(null, 4500,"Class-A","EG","UK", date3));
+            adminService.saveFlight(new Flight(null, 4500, "Class-A", "EG", "UK", date3));
 
 
         };

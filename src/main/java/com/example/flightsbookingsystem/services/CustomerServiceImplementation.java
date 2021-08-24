@@ -9,6 +9,7 @@ import com.example.flightsbookingsystem.repository.RoleRepo;
 import com.sun.xml.bind.v2.TODO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,11 +22,18 @@ import java.util.List;
 public class CustomerServiceImplementation implements CustomerService {
     private final CustomerRepo customerRepo;
     private final FlightRepo flightRepo;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public Customer saveCustomer(Customer customer) {
         log.info("saving new admin {} into database", customer);
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
         return customerRepo.save(customer);
+    }
+
+    @Override
+    public Customer getCustomer(String userName) {
+        return customerRepo.findByUserName(userName);
     }
 
     @Override
@@ -45,16 +53,16 @@ public class CustomerServiceImplementation implements CustomerService {
         Customer customer = customerRepo.findByUserName(userName);
         Flight flight = flightRepo.getById(flightId);
         customer.getFlights().add(flight);
-        log.info("user whose name is {} has booked a flight with an id equal to {}",customer.getName(),flight.getId());
+        log.info("user whose name is {} has booked a flight with an id equal to {}", customer.getName(), flight.getId());
     }
-    
+
     @Override
     public void upgradeFlight(String userName, Long flightId, String classType) {
         Flight flight = flightRepo.getById(flightId);
-        log.info("upgrading class type from {} to {}",flight.getClassType(),classType);
+        log.info("upgrading class type from {} to {}", flight.getClassType(), classType);
         Customer customer = customerRepo.findByUserName(userName);
         flight.setClassType(classType);
-        flight.setFare(flight.getFare()*2);
+        flight.setFare(flight.getFare() * 2);
     }
 
     @Override
